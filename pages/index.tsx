@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
 import MainLayout from '../components/layouts/Main';
-import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 

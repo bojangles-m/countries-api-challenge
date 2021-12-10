@@ -1,0 +1,14 @@
+$font-path: '/assets/fonts';
+
+@mixin font-face($font-name, $font-weight, $font-style: normal) {
+  @font-face {
+    font-family: 'Nunito Sans';
+    font-weight: #{$font-weight};
+    font-style: #{$font-style};
+    src: url('#{$font-path}/#{$font-name}.ttf');
+  }
+}
+
+@include font-face('NunitoSans-Light', 300);
+@include font-face('NunitoSans-Bold', 600);
+@include font-face('NunitoSans-ExtraBold', 800);
