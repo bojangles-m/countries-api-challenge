@@ -1,19 +1,15 @@
 import React from 'react';
-import useDarkMode from '../../../hooks/useDarkMode';
+import useThemeToggle from '../../../hooks/useThemeToggle';
 
 import styles from './Header.module.scss';
 
-// type Props = {
-//   onClick?: () => void;
-// };
-
 export default function Main() {
-  const { toggleDarkMode } = useDarkMode();
+  const { toggleActiveTheme } = useThemeToggle();
 
   return (
     <header className={styles.header}>
       <div>Where in the world?</div>
-      <div onClick={toggleDarkMode}>Dark Mode</div>
+      <div onClick={toggleActiveTheme}>Dark Mode</div>
     </header>
   );
 }

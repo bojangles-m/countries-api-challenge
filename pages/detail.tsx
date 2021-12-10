@@ -1,7 +1,9 @@
+import MainLayout from '../components/layouts/Main';
+
 export default function Detail() {
   return (
-    <div>
+    <MainLayout>
       <h1>Detail Page</h1>
-    </div>
+    </MainLayout>
   );
 }
