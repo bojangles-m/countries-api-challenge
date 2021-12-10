@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import MainLayout from '../components/layouts/Main';
+import Layout from '../components/organisms/Layout';
 import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
   return (
-    <MainLayout>
+    <Layout>
       <h1 className={styles.title}>
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </h1>
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
           <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
         </a>
       </div>
-    </MainLayout>
+    </Layout>
   );
 };
 

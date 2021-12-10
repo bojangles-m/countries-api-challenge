@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
-import MainLayout from '../components/layouts/Main';
+import Layout from '../components/organisms/Layout';
 import Button from '../components/atoms/Button';
 
 export default function Detail() {
   const router = useRouter();
   console.log(router.query);
   return (
-    <MainLayout>
+    <Layout>
       <Button to={router.back}>Back</Button>
       <h1>Detail Page</h1>
-    </MainLayout>
+    </Layout>
   );
 }

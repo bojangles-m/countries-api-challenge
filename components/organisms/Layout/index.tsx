@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
-import Header from '../organisms/Header';
+import Header from '../Header';
 
-import styles from './Main.module.scss';
+import styles from './Layout.module.scss';
 
 type Props = {
   children: JSX.Element | JSX.Element[];
 };
 
-export default function Main({ children }: Props) {
+export default function Layout({ children }: Props) {
   return (
     <main className={cn(styles.main)}>
       <Header />
