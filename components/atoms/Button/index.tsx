@@ -9,7 +9,7 @@ export enum ButtonType {
 }
 
 export type Props = {
-  children: string | JSX.Element;
+  children: React.ReactNode;
   customClass?: string;
   icon?: boolean;
   type?: ButtonType;

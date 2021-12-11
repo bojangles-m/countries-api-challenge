@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
-// import cn from 'classnames';
-import Image from 'next/image';
+import cn from 'classnames';
+import { SearchOutline } from 'react-ionicons';
 
 import styles from './Filter.module.scss';
 
@@ -12,9 +12,14 @@ const Filter = ({ onChange }: Props): JSX.Element => {
   return (
     <div className={styles.filter}>
       <div className={styles.search}>
-        <input onChange={onChange} type="text" className="input" />
+        <SearchOutline cssClasses={cn('icon', styles.icon)} />
+        <input
+          onChange={onChange}
+          type="text"
+          className="input"
+          placeholder="Search for a country ..."
+        />
       </div>
-      {/* <div>ddd</div> */}
     </div>
   );
 };

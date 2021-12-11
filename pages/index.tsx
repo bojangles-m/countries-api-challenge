@@ -24,10 +24,14 @@ const Home: NextPage = () => {
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const countryName = event.target.value;
     console.log(countryName);
-    if (!!countryName)
+    if (!!countryName) {
       fetchCountriesByName(countryName).then((response: Countries) =>
         setCountries(response),
       );
+      return;
+    }
+
+    fetchAllCountries().then(response => setCountries(response));
   };
 
   const debouncedChangeHandler = debounce(changeHandler, 1000);
@@ -40,7 +44,7 @@ const Home: NextPage = () => {
         }
       />
       <Grid>
-        {countries
+        {Array.isArray(countries)
           ? countries?.map((country: Country) => (
               <Card key={country.name} country={country} />
             ))

@@ -12,6 +12,7 @@
 }
 
 .search {
+  position: relative;
   width: 100%;
 
   @include bp.respond-to('mobile') {
@@ -21,4 +22,10 @@
   @include bp.respond-to('desktop') {
     width: 50%;
   }
+}
+
+.icon {
+  position: absolute;
+  top: 18px;
+  left: 30px;
 }
