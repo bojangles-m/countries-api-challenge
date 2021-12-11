@@ -9,7 +9,7 @@ export default function Main() {
 
   return (
     <header className={styles.header}>
-      <div>Where in the world?</div>
+      <h1>Where in the world?</h1>
       <Button
         type={ButtonType.PLAIN}
         onClick={toggleActiveTheme}

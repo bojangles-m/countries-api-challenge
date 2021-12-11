@@ -9,6 +9,23 @@
   background-color: var(--color-elements);
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
 
+  h1 {
+    font-size: 1.25rem;
+    margin: 4px 0 0;
+
+    @include bp.respond-to('mobile') {
+      font-size: 1.75rem;
+    }
+
+    @include bp.respond-to('tablet') {
+      font-size: 1.5rem;
+    }
+
+    @include bp.respond-to('desktop') {
+      font-size: 1.75rem;
+    }
+  }
+
   @include bp.respond-to('mobile') {
     padding: 0 30px;
   }
