@@ -18,14 +18,17 @@ export const setInitialTheme = `
 `;
 
 const toggleActiveTheme = (
-  isDarkThemeActive: boolean,
+  isDarkThemeActive: boolean | undefined,
   setActiveTheme: Dispatch<SetStateAction<THEME>>,
 ) => {
+  if (isDarkThemeActive === undefined) return;
   isDarkThemeActive ? setActiveTheme(THEME.LIGHT) : setActiveTheme(THEME.DARK);
 };
 
 export default function useThemeToggle() {
-  const [isDarkTheme, setIsDarkTheme] = React.useState<boolean>(false);
+  const [isDarkTheme, setIsDarkTheme] = React.useState<boolean | undefined>(
+    undefined,
+  );
   const [activeTheme, setActiveTheme] = React.useState<THEME>(() => {
     if (typeof document !== 'undefined')
       return document.body.dataset.theme as THEME;

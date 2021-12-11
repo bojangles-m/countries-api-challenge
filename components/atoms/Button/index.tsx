@@ -11,7 +11,6 @@ export enum ButtonType {
 export type Props = {
   children: React.ReactNode;
   customClass?: string;
-  icon?: boolean;
   type?: ButtonType;
 } & (
   | {
@@ -27,7 +26,6 @@ export type Props = {
 const Button = ({
   children,
   customClass,
-  icon,
   onClick,
   to,
   type,
@@ -40,11 +38,7 @@ const Button = ({
     if (onClick) onClick();
   };
 
-  const classNames = cn(
-    styles.btn,
-    { [styles[type!]]: type, '--icon': icon },
-    customClass,
-  );
+  const classNames = cn(styles.btn, { [styles[type!]]: type }, customClass);
 
   return (
     <button type="button" className={classNames} onClick={handleClick}>
