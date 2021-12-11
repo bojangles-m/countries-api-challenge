@@ -13,10 +13,6 @@
     font-size: 1.25rem;
     margin: 4px 0 0;
 
-    @include bp.respond-to('mobile') {
-      font-size: 1.75rem;
-    }
-
     @include bp.respond-to('tablet') {
       font-size: 1.5rem;
     }

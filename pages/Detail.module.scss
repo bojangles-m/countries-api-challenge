@@ -1,0 +1,75 @@
+@use './styles/breakpoints' as bp;
+
+.button {
+  margin-bottom: 40px;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+
+  @include bp.respond-to('tablet') {
+    flex-direction: row;
+  }
+}
+
+.image {
+  width: 100%;
+
+  @include bp.respond-to('tablet') {
+    width: 50%;
+    margin-right: 10%;
+  }
+}
+
+.section {
+  margin-bottom: 30px;
+  display: flex;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      line-height: 30px;
+    }
+  }
+
+  @include bp.respond-to('desktop') {
+    flex-direction: row;
+    width: 50%;
+    flex: 1 0 auto;
+  }
+
+  &:last-child {
+    flex-direction: column;
+
+    @include bp.respond-to('desktop') {
+      flex-direction: row;
+      margin-top: 30px;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 50%;
+
+  @include bp.respond-to('desktop') {
+    margin-top: 20px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  @include bp.respond-to('desktop') {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
