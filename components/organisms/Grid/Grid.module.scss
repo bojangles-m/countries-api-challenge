@@ -1,0 +1,29 @@
+@use './styles/breakpoints' as bp;
+
+.grid {
+  --grid-columns: 1;
+  --grid-gap: 40px;
+
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: var(--grid-gap);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(calc((100% - var(--grid-gap)) / var(--grid-columns)), 1fr)
+  );
+
+  @include bp.respond-to('mobile') {
+    --grid-columns: 2;
+    --grid-gap: 30px;
+  }
+
+  @include bp.respond-to('tablet') {
+    --grid-columns: 3;
+    --grid-gap: 50px;
+  }
+
+  @include bp.respond-to('desktop') {
+    --grid-columns: 4;
+    --grid-gap: 70px;
+  }
+}

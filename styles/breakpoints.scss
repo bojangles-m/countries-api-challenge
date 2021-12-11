@@ -1,0 +1,27 @@
+$breakpoints-values: (
+  x-large: 1440,
+  large: 1025,
+  medium: 769,
+  small: 376,
+);
+
+$breakpoints: (
+  'mobile': (
+    min-width: #{map-get($breakpoints-values, 'small')}px,
+  ),
+  'tablet': (
+    min-width: #{map-get($breakpoints-values, 'medium')}px,
+  ),
+  'desktop': (
+    min-width: #{map-get($breakpoints-values, 'large')}px,
+  ),
+  'desktop-large': (
+    min-width: #{map-get($breakpoints-values, 'x-large')}px,
+  ),
+) !default;
+
+@mixin respond-to($breakpoint) {
+  @media #{inspect(map-get($breakpoints, $breakpoint))} {
+    @content;
+  }
+}

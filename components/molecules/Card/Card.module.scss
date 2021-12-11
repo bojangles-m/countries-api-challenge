@@ -1,0 +1,20 @@
+@import './styles/mixins';
+
+.card {
+  overflow: hidden;
+  display: block;
+  width: auto;
+  background-color: var(--color-elements);
+  border-radius: 5px;
+  @include box-shadow();
+}
+
+.content {
+  margin: 30px 30px 50px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

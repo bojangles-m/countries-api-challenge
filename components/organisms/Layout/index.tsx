@@ -5,14 +5,14 @@ import Header from '../Header';
 import styles from './Layout.module.scss';
 
 type Props = {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 };
 
 export default function Layout({ children }: Props) {
   return (
     <main className={cn(styles.main)}>
       <Header />
-      {children}
+      <div className={styles.content}>{children}</div>
     </main>
   );
 }

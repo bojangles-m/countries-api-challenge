@@ -10,7 +10,10 @@ export default function Main() {
   return (
     <header className={styles.header}>
       <div>Where in the world?</div>
-      <Button type={ButtonType.PLAIN} onClick={toggleActiveTheme}>
+      <Button
+        type={ButtonType.PLAIN}
+        onClick={toggleActiveTheme}
+        customClass={styles.button}>
         {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
       </Button>
     </header>
