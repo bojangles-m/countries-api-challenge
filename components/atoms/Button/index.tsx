@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 
@@ -11,6 +11,7 @@ export enum ButtonType {
 export type Props = {
   children: React.ReactNode;
   customClass?: string;
+  Icon?: any;
   type?: ButtonType;
 } & (
   | {
@@ -24,6 +25,7 @@ export type Props = {
 );
 
 const Button = ({
+  Icon,
   children,
   customClass,
   onClick,
@@ -39,10 +41,11 @@ const Button = ({
   };
 
   const classNames = cn(styles.btn, { [styles[type!]]: type }, customClass);
-
+  const classesText = cn({ [styles.icon_text]: Icon });
   return (
     <button type="button" className={classNames} onClick={handleClick}>
-      {children}
+      {Icon && <Icon cssClasses={cn('icon', styles.icon)} />}
+      <span className={classesText}>{children}</span>
     </button>
   );
 };

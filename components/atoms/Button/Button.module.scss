@@ -6,7 +6,7 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  padding: 8px 18px;
+  padding: 8px 25px;
   border-radius: 4px;
   color: inherit;
   background-color: var(--color-elements);
@@ -20,4 +20,8 @@
   &.plain {
     box-shadow: none;
   }
+}
+
+.icon_text {
+  margin-left: 30px;
 }

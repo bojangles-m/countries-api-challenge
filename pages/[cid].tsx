@@ -4,6 +4,7 @@ import Layout from '../components/organisms/Layout';
 import Button from '../components/atoms/Button';
 import { fetchCountry } from '../useCases/fetchCountry';
 import { Country } from '../useCases/types';
+import { ArrowBackOutline } from 'react-ionicons';
 
 export default function Detail() {
   const router = useRouter();
@@ -18,7 +19,9 @@ export default function Detail() {
 
   return (
     <Layout>
-      <Button to={router.back}>Back</Button>
+      <Button to={router.back} Icon={ArrowBackOutline}>
+        Back
+      </Button>
       <h1>Detail Page</h1>
     </Layout>
   );
