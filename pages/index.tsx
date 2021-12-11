@@ -1,55 +1,49 @@
-import React, { ChangeEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import debounce from 'lodash/debounce';
 import type { NextPage } from 'next';
 import Layout from '../components/organisms/Layout';
 import Grid from '../components/organisms/Grid';
 import Card from '../components/molecules/Card';
 import Filter from '../components/organisms/Filter';
-import {
-  fetchAllCountries,
-  Countries,
-  Country,
-} from '../useCases/fetchAllCountries';
+import { Countries, Country } from '../useCases/fetchAllCountries';
 import { fetchCountriesByName } from '../useCases/fetchCountriesByName';
+import useDataProvider from '../lib/DataProvider';
+
+const printCards = (countries?: Countries) => {
+  if (!countries) return 'Loading...';
+  if (Array.isArray(countries) && countries.length === 0)
+    return 'No countries found!';
+
+  return countries?.map((country: Country) => (
+    <Card key={country.name} country={country} />
+  ));
+};
 
 const Home: NextPage = () => {
-  const [countries, setCountries] = React.useState<Countries | undefined>(
-    undefined,
-  );
+  const { allCountries } = useDataProvider();
+  const [countries, setCountries] = useState<Countries | undefined>(undefined);
 
-  React.useEffect(() => {
-    fetchAllCountries().then(response => setCountries(response));
-  }, []);
+  useEffect(() => {
+    setCountries(allCountries);
+  }, [allCountries]);
 
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const countryName = event.target.value;
-    console.log(countryName);
-    if (!!countryName) {
-      fetchCountriesByName(countryName).then((response: Countries) =>
-        setCountries(response),
-      );
+  const changeHandler = (key: string) => {
+    if (!!key) {
+      fetchCountriesByName(key).then((response: Countries) => {
+        setCountries(response);
+      });
       return;
     }
 
-    fetchAllCountries().then(response => setCountries(response));
+    setCountries(allCountries);
   };
 
   const debouncedChangeHandler = debounce(changeHandler, 1000);
 
   return (
     <Layout>
-      <Filter
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-          debouncedChangeHandler(event)
-        }
-      />
-      <Grid>
-        {Array.isArray(countries)
-          ? countries?.map((country: Country) => (
-              <Card key={country.name} country={country} />
-            ))
-          : 'Loading...'}
-      </Grid>
+      <Filter onChange={(key: string) => debouncedChangeHandler(key)} />
+      <Grid>{printCards(countries)}</Grid>
     </Layout>
   );
 };

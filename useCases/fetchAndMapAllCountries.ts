@@ -8,12 +8,11 @@ type Country = {
 
 export type Countries = Map<string, string>;
 
-export function fetchAndMapAllCountries(): Promise<Countries> {
-  return axios.get(countriesMin).then(response => {
-    const countriesMap = new Map();
-    response.data.forEach((country: Country) => {
-      countriesMap.set(country.alpha3Code, country.name);
-    });
-    return Promise.resolve(countriesMap);
+export async function fetchAndMapAllCountries(): Promise<Countries> {
+  const countriesMap = new Map();
+  const response = await axios.get(countriesMin);
+  response.data.forEach((country: Country) => {
+    countriesMap.set(country.alpha3Code, country.name);
   });
+  return countriesMap;
 }

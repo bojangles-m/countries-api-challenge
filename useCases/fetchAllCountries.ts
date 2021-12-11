@@ -10,6 +10,7 @@ export type Country = {
 };
 export type Countries = Country[];
 
-export function fetchAllCountries(): Promise<Countries> {
-  return axios.get(countries).then(response => response.data);
+export async function fetchAllCountries(): Promise<Countries> {
+  const response = await axios.get(countries);
+  return response.data;
 }

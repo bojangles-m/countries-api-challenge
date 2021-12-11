@@ -2,11 +2,13 @@ import axios from 'axios';
 import { countriesByName } from './endpoints';
 import { Countries } from './fetchAllCountries';
 
-export function fetchCountriesByName(name: string): Promise<Countries> {
-  return axios
-    .get(countriesByName(name))
-    .then(response => response.data)
-    .catch(() =>
-      Promise.reject(new Error(`No country with the name "${name}"`)),
-    );
+export async function fetchCountriesByName(name: string): Promise<Countries> {
+  try {
+    const response = await axios.get(countriesByName(name));
+    if (!Array.isArray(response.data)) return [];
+
+    return response.data;
+  } catch (error) {
+    return [];
+  }
 }

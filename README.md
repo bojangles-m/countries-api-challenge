@@ -1,6 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# REST Countries API with color theme switcher
 
 ## Getting Started
+
+To install all the dependencies listed within package.json in the local node_modules folder.
+
+```bash
+npm install
+# or
+yarn install
+```
 
 First, run the development server:
 

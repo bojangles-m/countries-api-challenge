@@ -1,6 +1,7 @@
 import '../styles/globals.scss';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { DataProvider } from '../lib/DataProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <DataProvider>
+        <Component {...pageProps} />
+      </DataProvider>
     </>
   );
 }

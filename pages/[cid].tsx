@@ -6,10 +6,11 @@ import Button from '../components/atoms/Button';
 import { fetchCountry } from '../useCases/fetchCountry';
 import { Country } from '../useCases/types';
 import { ArrowBackOutline } from 'react-ionicons';
-
+import useDataProvider, { Status } from '../lib/DataProvider';
 import styles from './Detail.module.scss';
 
 export default function Detail() {
+  const { status, mappedCountries } = useDataProvider();
   const router = useRouter();
   const [country, setCountry] = React.useState<Country | undefined>(undefined);
 
@@ -22,18 +23,28 @@ export default function Detail() {
 
   const doBorderCountriesExist =
     country && Array.isArray(country.borders) && country.borders.length > 0;
-  const borderCountries = doBorderCountriesExist && (
-    <section className={styles.section}>
-      <strong>Border Countries:</strong>
-      {country.borders.map(border => border).join(', ')}
-    </section>
-  );
+  const borderCountries =
+    status === Status.LOADING ? (
+      'Loading...'
+    ) : doBorderCountriesExist ? (
+      <div className={styles['border-countries']}>
+        {country.borders.map(borderCountry => (
+          <Button
+            key={mappedCountries.get(borderCountry)}
+            to={`/${mappedCountries.get(borderCountry)}`}>
+            {mappedCountries.get(borderCountry)}
+          </Button>
+        ))}
+      </div>
+    ) : (
+      <span className={styles['border-countries__none']}>
+        Has no border Countries
+      </span>
+    );
+
   return (
     <Layout>
-      <Button
-        to={router.back}
-        Icon={ArrowBackOutline}
-        customClass={styles.button}>
+      <Button to="/" Icon={ArrowBackOutline} customClass={styles.button}>
         Back
       </Button>
       {country && (
@@ -84,7 +95,12 @@ export default function Detail() {
                   </li>
                 </ul>
               </section>
-              {borderCountries}
+              <section className={styles.section}>
+                <span className={styles['border-countries__title']}>
+                  Border Countries:
+                </span>
+                {borderCountries}
+              </section>
             </div>
           </div>
         </article>
