@@ -33,13 +33,15 @@ function initialize({
 }
 
 export function fetchCountry(name: string) {
-  return axios.get(country(name)).then(({ data }) => {
-    console.log(data);
-    if (data.status) {
-      return Promise.reject(new Error(`No country with the name "${name}"`));
-    } else {
-      const [country] = data;
+  return axios
+    .get(country(name))
+    .then(response => {
+      const [country] = response.data;
+      console.log(country);
       return initialize(country);
-    }
-  });
+    })
+    .catch(error => {
+      console.log(error);
+      return Promise.reject(new Error(`No country with the name "${name}"`));
+    });
 }

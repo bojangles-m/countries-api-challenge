@@ -6,8 +6,8 @@ type Name = {
   official: string;
 };
 export type Country = {
-  name: Name;
-  capital: string[];
+  name: string;
+  capital: string;
   population: number;
   flags: {
     png: string;
@@ -18,11 +18,8 @@ export type Country = {
 export type Countries = Country[];
 
 export function fetchAllCountries(): Promise<Countries> {
-  return axios.get(countries).then(({ data }) => {
-    if (data.status) {
-      return Promise.reject(new Error(data.message));
-    } else {
-      return data;
-    }
+  return axios.get(countries).then(response => {
+    console.log(response.data);
+    return response.data;
   });
 }
