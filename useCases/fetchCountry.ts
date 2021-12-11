@@ -37,11 +37,9 @@ export function fetchCountry(name: string) {
     .get(country(name))
     .then(response => {
       const [country] = response.data;
-      console.log(country);
       return initialize(country);
     })
-    .catch(error => {
-      console.log(error);
+    .catch(() => {
       return Promise.reject(new Error(`No country with the name "${name}"`));
     });
 }
