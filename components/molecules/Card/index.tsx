@@ -1,5 +1,4 @@
 import React from 'react';
-// import cn from 'classnames';
 import Image from 'next/image';
 import { Country } from '../../../useCases/fetchAllCountries';
 
@@ -14,8 +13,8 @@ const Card = ({ country }: Props): JSX.Element => {
     <a href={`/${country.name}`} className={styles.card}>
       <div>
         <Image
-          src={country.flags.svg}
-          height={350}
+          src={country.flag}
+          height={400}
           width={600}
           layout="intrinsic"
           alt={country.name}

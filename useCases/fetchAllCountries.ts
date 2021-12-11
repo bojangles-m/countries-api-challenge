@@ -1,18 +1,11 @@
 import axios from 'axios';
 import { countries } from './endpoints';
 
-type Name = {
-  common: string;
-  official: string;
-};
 export type Country = {
   name: string;
   capital: string;
   population: number;
-  flags: {
-    png: string;
-    svg: string;
-  };
+  flag: string;
   region: string;
 };
 export type Countries = Country[];
