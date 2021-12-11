@@ -1,10 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
+import { ifTest } from '../../../utils/ifTest';
 
 import styles from './Button.module.scss';
 
-export enum ButtonType {
+export enum ButtonStyle {
   PLAIN = 'plain',
 }
 
@@ -12,7 +13,7 @@ export type Props = {
   children: React.ReactNode;
   customClass?: string;
   Icon?: any;
-  type?: ButtonType;
+  buttonStyle?: ButtonStyle;
 } & (
   | {
       to: string | (() => void);
@@ -30,7 +31,7 @@ const Button = ({
   customClass,
   onClick,
   to,
-  type,
+  buttonStyle,
 }: Props): JSX.Element => {
   const router = useRouter();
 
@@ -40,10 +41,18 @@ const Button = ({
     if (onClick) onClick();
   };
 
-  const classNames = cn(styles.btn, { [styles[type!]]: type }, customClass);
+  const classNames = cn(
+    styles.btn,
+    { [styles[buttonStyle!]]: buttonStyle },
+    customClass,
+  );
   const classesText = cn({ [styles.icon_text]: Icon });
   return (
-    <button type="button" className={classNames} onClick={handleClick}>
+    <button
+      type="button"
+      className={classNames}
+      onClick={handleClick}
+      data-testid={ifTest('button')}>
       {Icon && <Icon cssClasses={cn('icon', styles.icon)} />}
       <span className={classesText}>{children}</span>
     </button>

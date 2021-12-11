@@ -7,7 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "cypress": "cypress open",
-    "e2e": "start-server-and-test dev http://localhost:3000 cypress"
+    "e2e": "start-server-and-test dev http://localhost:3000 cypress",
+    "test": "jest",
+    "test:ci": "jest --ci"
   },
   "dependencies": {
     "axios": "^0.21.4",
@@ -20,13 +22,21 @@
     "sass": "^1.44.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.0.3",
     "@types/lodash": "^4.14.178",
     "@types/node": "16.11.12",
     "@types/react": "17.0.37",
     "cypress": "^9.1.1",
     "eslint": "8.4.1",
     "eslint-config-next": "12.0.7",
+    "eslint-plugin-testing-library": "^5.0.1",
+    "jest": "^27.4.4",
+    "react-test-renderer": "^17.0.2",
     "start-server-and-test": "^1.14.0",
+    "ts-jest": "^27.1.1",
     "typescript": "4.5.2"
   }
 }

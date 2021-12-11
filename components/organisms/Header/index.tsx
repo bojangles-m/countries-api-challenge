@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { ButtonType } from '../../atoms/Button';
+import Button, { ButtonStyle } from '../../atoms/Button';
 import useThemeToggle from '../../../hooks/useThemeToggle';
 import { Moon, Sunny } from 'react-ionicons';
 
@@ -10,7 +10,7 @@ export default function Main() {
 
   const button = (
     <Button
-      type={ButtonType.PLAIN}
+      buttonStyle={ButtonStyle.PLAIN}
       onClick={toggleActiveTheme}
       customClass={styles.button}
       Icon={isDarkTheme ? Sunny : Moon}>
