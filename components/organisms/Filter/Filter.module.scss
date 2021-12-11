@@ -1,0 +1,24 @@
+@use './styles/breakpoints' as bp;
+
+.filter {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  @include bp.respond-to('mobile') {
+    flex-direction: column;
+  }
+}
+
+.search {
+  width: 100%;
+
+  @include bp.respond-to('mobile') {
+    width: 60%;
+  }
+
+  @include bp.respond-to('desktop') {
+    width: 50%;
+  }
+}

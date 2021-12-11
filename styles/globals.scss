@@ -1,3 +1,4 @@
+@import 'constants';
 @import 'fonts';
 @import 'colors';
 @import 'mixins';
@@ -29,5 +30,13 @@ h4 {
   margin: 1rem 0;
 }
 
-input {
+.input {
+  outline: 0;
+  border: 0;
+  height: 4rem;
+  width: 100%;
+  background-color: var(--color-elements);
+  color: var(--color-text);
+  @include box-shadow();
+  border-radius: var(--border-radius);
 }

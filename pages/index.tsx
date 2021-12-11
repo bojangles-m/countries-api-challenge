@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Layout from '../components/organisms/Layout';
 import Grid from '../components/organisms/Grid';
 import Card from '../components/molecules/Card';
+import Filter from '../components/organisms/Filter';
 import {
   fetchAllCountries,
   Countries,
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const countryName = event.target.value;
+    console.log(countryName);
     if (!!countryName)
       fetchCountriesByName(countryName).then((response: Countries) =>
         setCountries(response),
@@ -32,8 +34,11 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <input onChange={debouncedChangeHandler} type="text" />
-
+      <Filter
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          debouncedChangeHandler(event)
+        }
+      />
       <Grid>
         {countries
           ? countries?.map((country: Country) => (

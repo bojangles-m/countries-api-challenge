@@ -32,7 +32,7 @@ const Card = ({ country }: Props): JSX.Element => {
             <strong>Region:</strong> {country.region}
           </li>
           <li>
-            <strong>Capital:</strong> {country.capital[0]}
+            <strong>Capital:</strong> {country.capital}
           </li>
         </ul>
       </div>
