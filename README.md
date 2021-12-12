@@ -1,8 +1,8 @@
 # REST Countries API with color theme switcher
 
-## Getting Started
+## Installation
 
-To install all the dependencies listed within package.json in the local node_modules folder.
+First install all the dependencies listed within package.json in the local node_modules folder.
 
 ```bash
 npm install
@@ -10,7 +10,9 @@ npm install
 yarn install
 ```
 
-First, run the development server:
+## Getting Started
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -20,11 +22,19 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Run E2E test:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+npm run e2e
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+It opens up Cypress app where test can be run.
+
+To run Unit test:
+
+```bash
+npm run test
+```
 
 ## Learn More
 
