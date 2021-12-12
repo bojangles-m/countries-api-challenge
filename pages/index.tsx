@@ -38,7 +38,7 @@ const Home: NextPage = () => {
     setCountries(allCountries);
   };
 
-  const debouncedChangeHandler = debounce(changeHandler, 1000);
+  const debouncedChangeHandler = debounce(changeHandler, 500);
 
   return (
     <Layout>
