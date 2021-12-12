@@ -1,32 +1,36 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Card from './index';
 
 import Sample from './Card.sample';
 
+const setup = () => {
+  const utils = render(<Card country={Sample} />);
+  return {
+    ...utils,
+  };
+};
+
 describe('Card molecule component', () => {
   it('should render without crashing', () => {
-    render(<Card country={Sample} />);
-
-    const card = screen.getByTestId('card');
-    expect(card).toBeInTheDocument();
+    const { getByTestId } = setup();
+    expect(getByTestId('card')).toBeInTheDocument();
   });
 
   it('should render with correct data', () => {
-    render(<Card country={Sample} />);
+    const { getByAltText, getByText } = setup();
 
-    expect(screen.getByAltText(Sample.name)).toBeInTheDocument();
-    expect(screen.getByText(Sample.name)).toBeInTheDocument();
-    expect(screen.getByText(Sample.capital)).toBeInTheDocument();
-    expect(screen.getByText(Sample.region)).toBeInTheDocument();
+    expect(getByAltText(Sample.name)).toBeInTheDocument();
+    expect(getByText(Sample.name)).toBeInTheDocument();
+    expect(getByText(Sample.capital)).toBeInTheDocument();
+    expect(getByText(Sample.region)).toBeInTheDocument();
     expect(
-      screen.getByText(Intl.NumberFormat().format(Sample.population)),
+      getByText(Intl.NumberFormat().format(Sample.population)),
     ).toBeInTheDocument();
   });
 
   it('should have the right link', () => {
-    render(<Card country={Sample} />);
-    const link = screen.getByRole('link');
-    expect(link).toHaveAttribute('href', `/${Sample.name}`);
+    const { getByRole } = setup();
+    expect(getByRole('link')).toHaveAttribute('href', `/${Sample.name}`);
   });
 });
