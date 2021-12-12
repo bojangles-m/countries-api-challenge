@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Country } from '../../../useCases/fetchAllCountries';
+import { ifTest } from '../../../utils/ifTest';
 
 import styles from './Card.module.scss';
 
@@ -10,7 +11,10 @@ export type Props = {
 
 const Card = ({ country }: Props): JSX.Element => {
   return (
-    <a href={`/${country.name}`} className={styles.card}>
+    <a
+      href={`/${country.name}`}
+      className={styles.card}
+      data-testid={ifTest('card')}>
       <div>
         <Image
           src={country.flag}

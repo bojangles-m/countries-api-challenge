@@ -1,12 +1,16 @@
 import React from 'react';
 import Button, { ButtonStyle } from '../../atoms/Button';
-import useThemeToggle from '../../../hooks/useThemeToggle';
+import useThemeToggle, { THEME } from '../../../hooks/useThemeToggle';
 import { Moon, Sunny } from 'react-ionicons';
 
 import styles from './Header.module.scss';
 
-export default function Main() {
-  const { isDarkTheme, toggleActiveTheme } = useThemeToggle();
+type Props = {
+  theme?: THEME;
+};
+
+export default function Header({ theme }: Props) {
+  const { isDarkTheme, toggleActiveTheme } = useThemeToggle(theme);
 
   const button = (
     <Button

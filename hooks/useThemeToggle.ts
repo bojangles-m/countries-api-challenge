@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 
-enum THEME {
+export enum THEME {
   LIGHT = 'light',
   DARK = 'dark',
 }
@@ -25,9 +25,9 @@ const toggleActiveTheme = (
   isDarkThemeActive ? setActiveTheme(THEME.LIGHT) : setActiveTheme(THEME.DARK);
 };
 
-export default function useThemeToggle() {
+export default function useThemeToggle(theme?: THEME) {
   const [isDarkTheme, setIsDarkTheme] = React.useState<boolean | undefined>(
-    undefined,
+    theme === undefined ? undefined : theme === THEME.DARK,
   );
   const [activeTheme, setActiveTheme] = React.useState<THEME>(() => {
     if (typeof document !== 'undefined')
